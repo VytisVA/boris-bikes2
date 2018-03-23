@@ -10,7 +10,7 @@ class DockingStation
   end
 
   def release_bike
-    fail 'No bike available' unless empty?
+    fail 'No bike available' ifc empty?
     Bike.new
     @collection.pop
   end
