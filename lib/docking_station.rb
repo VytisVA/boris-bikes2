@@ -2,15 +2,16 @@ require_relative 'bike'
 
 class DockingStation
 
-  attr_reader :bike
-  attr_reader :collection
+  attr_reader :bike, :collection, :capacity
+
   DEFAULT_CAPACITY = 20
   def initialize
     @collection = []
+    @capacity = DEFAULT_CAPACITY
   end
 
   def release_bike
-    fail 'No bike available' ifc empty?
+    fail 'No bike available' if empty?
     Bike.new
     @collection.pop
   end
@@ -23,7 +24,7 @@ class DockingStation
 
   private
   def full?
-    @collection.count == DEFAULT_CAPACITY
+    @collection.count == capacity
   end
 
   def empty?

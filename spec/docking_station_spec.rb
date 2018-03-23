@@ -22,9 +22,13 @@ describe DockingStation do
     expect(subject.bike).to eq @bike
   end
 
+  it 'has a default capacity' do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
   describe '#release_bike' do
     it 'raises an error' do
-      # 20.times { subject.release_bike Bike.new }
+      subject.capacity { subject.dock Bike.new }
       expect { subject.release_bike }.to raise_error ("No bike available")
     end
   end
